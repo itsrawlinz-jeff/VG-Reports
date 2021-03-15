@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="CRMDATASOURCE">
+      <DataSourceReference>CRM Data Source</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>b48a55d1-5cb6-4b6d-b81d-1ad6f5d02df7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="CRMDATASET">
+      <Query>
+        <DataSourceName>CRMDATASOURCE</DataSourceName>
+        <CommandText>SELECT        tbl_assigntask.*, tbl_customer.*
+FROM            tbl_assigntask INNER JOIN
+                         tbl_lead ON tbl_assigntask.leadno = tbl_lead.leadno CROSS JOIN
+                         tbl_interactions CROSS JOIN
+                         tbl_customer CROSS JOIN
+                         tbl_login</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="leadno">
+          <DataField>leadno</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="leadname">
+          <DataField>leadname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="assigntask">
+          <DataField>assigntask</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="deadline">
+          <DataField>deadline</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CustId">
+          <DataField>CustId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="CustName">
+          <DataField>CustName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="landmark">
+          <DataField>landmark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="city">
+          <DataField>city</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="contactno">
+          <DataField>contactno</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="EXP2">
+      <Query>
+        <DataSourceName>CRMDATASOURCE</DataSourceName>
+        <CommandText>SELECT        tbl_assigntask.*, tbl_lead.leadname AS Expr2, tbl_lead.infofrom AS Expr3, tbl_lead.address AS Expr4, tbl_lead.landmark AS Expr5, tbl_lead.city AS Expr6, tbl_lead.contact AS Expr7, tbl_lead.business AS Expr8, 
+                         tbl_lead.opportunity AS Expr9, tbl_lead.remarks AS Expr10, tbl_lead.Email AS Expr11
+FROM            tbl_lead INNER JOIN
+                         tbl_assigntask ON tbl_lead.leadno = tbl_assigntask.leadno</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="leadno">
+          <DataField>leadno</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="leadname">
+          <DataField>leadname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="assigntask">
+          <DataField>assigntask</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="deadline">
+          <DataField>deadline</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr2">
+          <DataField>Expr2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr3">
+          <DataField>Expr3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr4">
+          <DataField>Expr4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr5">
+          <DataField>Expr5</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr6">
+          <DataField>Expr6</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr7">
+          <DataField>Expr7</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Expr8">
+          <DataField>Expr8</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr9">
+          <DataField>Expr9</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr10">
+          <DataField>Expr10</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Expr11">
+          <DataField>Expr11</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix5">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox47">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>leadno</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox47</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox49">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>leadname</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox49</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox51">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>assigntask</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox51</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="leadno">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!leadno.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>leadno</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="leadname">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!leadname.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>leadname</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="assigntask">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!assigntask.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>assigntask</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>EXP2</DataSetName>
+            <Top>0.89458in</Top>
+            <Left>3.66542in</Left>
+            <Height>0.5in</Height>
+            <Width>3in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>6.07986in</Height>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundImage>
+            <Source>Embedded</Source>
+            <Value>androidchrome192x192</Value>
+          </BackgroundImage>
+        </Style>
+      </Body>
+      <Width>12.61333in</Width>
+      <Page>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="androidchrome192x192">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>13a0f7f6-05a5-4326-bb02-092399f30c61</rd:ReportID>
+</Report>
